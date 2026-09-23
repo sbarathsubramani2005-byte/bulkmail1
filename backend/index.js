@@ -1,6 +1,7 @@
 const express = require("express")
 const cors = require("cors")
 const App = express()
+require("dotenv").config()
 const dns=require("dns")
  dns.setServers(["8.8.8.8","1.1.1.1"])
 const mongoose = require("mongoose")
@@ -8,7 +9,7 @@ const nodemailer = require("nodemailer");
 
 App.use(cors())
 App.use(express.json())
-mongoose.connect("mongodb+srv://barath:969875@cluster0.c3cuiq4.mongodb.net/?appName=Cluster0")
+mongoose.connect(process.env.MONGO_URI)
 .then(()=>console.log("Mongodb connected")).catch((err)=> console.log(err))
 
 
